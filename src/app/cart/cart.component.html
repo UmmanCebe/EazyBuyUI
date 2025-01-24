@@ -1,0 +1,44 @@
+<h2 style="text-align: center;">Your Cart</h2>
+<div *ngIf="cartItems.length > 0; else emptyCart" class="cart-container">
+  <div class="cart-grid">
+    <mat-card *ngFor="let item of cartItems" class="cart-card">
+      <img mat-card-image [src]="item.image" alt="{{ item.name }}" />
+      <mat-card-header>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-subtitle>Quantity: {{ item.quantity }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <strong>{{ item.price | currency }}</strong>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Toplam fiyat kutusu -->
+  <div class="total-price-container">
+    <mat-card class="total-price-card">
+      <mat-card-header>
+        <mat-card-title>Total Price</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>{{ totalPrice | currency }}</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="cart-actions">
+    <button mat-raised-button color="warn" (click)="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <p style="text-align: center;">Your cart is empty.</p>
+</ng-template>
+
+<!-- Ana sayfaya yönlendiren buton -->
+<div style="margin-top: 16px; text-align: center;">
+  <button mat-raised-button color="primary" [routerLink]="'/'">
+    Back to Home
+  </button>
+</div>
