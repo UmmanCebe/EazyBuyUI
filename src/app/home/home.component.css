@@ -1,3 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Çift scroll'u önlemek için */
+}
+
+.container {
+  height: calc(100vh - 64px); /* Toolbar çıkınca kalan alanı kaplasın */
+  overflow: hidden; /* Fazla taşmayı engelle */
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -35,6 +47,7 @@
   text-overflow: ellipsis; /* Metnin sonuna ... ekle */
   display: -webkit-box; /* Çok satırda sınırlama için gerekli */
   -webkit-line-clamp: 3; /* Görünecek maksimum satır sayısı */
+  line-clamp: 3; /* Görünecek maksimum satır sayısı */
   -webkit-box-orient: vertical; /* Çok satırda çalışması için dikey yönlendirme */
   font-size: 14px; /* Yazı tipi boyutunu düzenle */
   line-height: 1.5; /* Satır yüksekliğini ayarla */
