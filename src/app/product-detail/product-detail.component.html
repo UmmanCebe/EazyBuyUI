@@ -1,3 +1,28 @@
-<p>
-  product-detail works!
-</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button [routerLink]="'/'">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Product Details</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [routerLink]="'/cart'">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="product-detail-container" *ngIf="product">
+  <mat-card class="product-detail-card">
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="product.image" alt="{{ product.name }}" />
+    <mat-card-content>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price"><strong>{{ product.price | currency }}</strong></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="addToCart(product)">
+        Add to Cart
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
